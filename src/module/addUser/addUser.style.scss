@@ -1,0 +1,25 @@
+.add-user{
+    margin-left: 30px;
+}
+
+.btn-add{
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+
+    &:hover{
+        background-color: #2a75f7;
+        border: none;
+        color: black;
+        text-align:center;
+        text-decoration: none;
+        font-weight: 600;
+        border-radius: 10px;
+    }
+}

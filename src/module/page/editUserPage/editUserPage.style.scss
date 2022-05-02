@@ -1,0 +1,80 @@
+.user-page{
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+.form-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-form{
+    display: flex;
+    flex-direction: column;
+    background: white;
+    width: 800px;
+    padding-bottom:100px;
+}
+
+.form-label{
+    margin-left:20px;
+    margin-top:20px;
+    height: 20px;
+    width: 700px;
+    font-size: 18px;
+    font-weight:bold;
+}
+
+.form-input{
+    margin-left:20px;
+    height: 40px;
+    width: 700px;
+    font-size:16px;
+}
+
+.form-radio{
+    margin-left:20px;
+}
+
+.form-radio__label{
+    margin-left:20px;
+}
+
+.form-input__last-name{
+    margin-bottom:20px;
+}
+
+.form-input__birthday{
+    width:200px;
+    font-size:20px;
+}
+
+.form-input_textarea{
+    margin-left:20px;
+    width: 700px;
+}
+
+.button-submit{
+    width:100px;
+    height:50px;
+    border-radius:10px;
+    margin-left: 20px;
+    margin-top:10px;
+    color:red;
+    background-color:black;
+    font-size: 16px;
+
+    &:hover{
+        background-color: blue;
+        color:white;
+    }
+}
+
+
+.avatar{
+    width: 200px;
+    height: 200px;
+    padding-left: 50px;
+    object-fit: contain;
+}

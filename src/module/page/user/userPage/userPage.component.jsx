@@ -1,6 +1,6 @@
 import React from 'react';
-import UsersTable from '../../userTable/userTable.component';
-import AddUser from '../../addUser/addUser.component.jsx';
+import UsersTable from '../userTable/userTable.component';
+import AddUser from '../addUser/addUser.component.jsx';
 
 import './userPage.style.scss';
 

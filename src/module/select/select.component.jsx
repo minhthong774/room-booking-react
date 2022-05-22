@@ -9,7 +9,7 @@ function Select({link, name, handleChange, parentId, root, curentValue}){
     if(parentId!=null)link=link+parentId;
     useEffect(
         ()=>{
-            if(parentId==null&&root==false) return;
+            if(parentId===null&&root===false) return;
             axios.get(link)
                 .then(function (response) {
                     const data=response.data
@@ -21,7 +21,7 @@ function Select({link, name, handleChange, parentId, root, curentValue}){
                 .then(function () {
                 });
         },
-        [parentId]
+        [parentId, link, root]
     )
 
     return(

@@ -1,8 +1,9 @@
 import React from 'react';
 import './header.style.scss';
 import {Link} from 'react-router-dom';
+import AccountMenu from '../accountMenu/accountMenu.component';
 
-function Header(){
+function Header({token}){
     return(
         <div>
         <div className="nav">
@@ -11,10 +12,11 @@ function Header(){
                 <Link to={"/rooms"}>ROOM</Link>
                 <Link to={"/bookings"}>BOOKING</Link>
                 <Link to={"/settings"}>SETTING</Link>
+                <Link to={"/stats"}>STATS</Link>
             </div>
 
             <div className="nav-right">
-                <a href="/users">ACCOUNT</a>
+                <AccountMenu token={token}/>
             </div>
         </div>
         <div className="dash-horizon">

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import './userTable.style.scss';
+import { Link } from 'react-router-dom';
+import './roomTable.style.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Pagination from '@mui/material/Pagination';
@@ -15,12 +15,11 @@ import DialogTitle from '@mui/material/DialogTitle';
 
 import axios from 'axios';
 
-function UsersTable(){
-    const navigate = useNavigate();
+function RoomTable(){
 
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
-    const [users, setUsers] = useState([]);
+    const [rooms, setRooms] = useState([]);
     const [message, setMessage] = useState(null);
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
@@ -47,7 +46,7 @@ function UsersTable(){
     };
 
     function DeleteHandle(){
-        const URL = `http://localhost:8080/admin/api/users/` + idDelete;
+        const URL = `http://localhost:8080/admin/api/room/` + idDelete;
 
         axios({
             method: 'DELETE',
@@ -56,7 +55,7 @@ function UsersTable(){
             .then(function(response){
                 setMessage(response.data);
                 setOpenMessage(true);
-                setUsers(users.filter(user=>user.id != idDelete));
+                setRooms(rooms.filter(room=>room.id !== idDelete));
             })
             .catch(function(error){
                 if(error.response){
@@ -73,10 +72,10 @@ function UsersTable(){
         var id = e.currentTarget.parentNode.parentNode.firstChild.firstChild.textContent;
         axios({
             method: 'post',
-            url: `http://localhost:8080/admin/api/users/${id}/change_status`
+            url: `http://localhost:8080/admin/api/room/${id}/change_status`
         })
         .then(response=>{
-            if(response.data==="Success")setStatus(!status);
+            if(response.data === "Success")setStatus(!status);
         })
         .catch(error=>{
 
@@ -88,12 +87,12 @@ function UsersTable(){
     }
 
     useEffect(()=>{
-        fetch(`http://localhost:8080/admin/api/users?page=${page}&sortField=${'id'}&sortDir=${'asc'}`)
+        fetch(`http://localhost:8080/admin/api/room?page=${page}&sortField=${'id'}&sortDir=${'asc'}`)
         .then(res=>res.json())
         .then(
             (result)=>{
                 setIsLoaded(true);
-                setUsers(result.content);
+                setRooms(result.content);
                 setTotalPages(result.totalPages);
             },
             (error)=>{
@@ -110,43 +109,38 @@ function UsersTable(){
     } else {
         return (
         <div className="users">
-        {/* <div className="message">{message?message:""}</div> */}
         <table className="users-table">
             <thead>
             <tr>
-                <th className="column1">ID</th>
-                <th className="column2">AVATAR</th>
-                <th className="column3">FULL NAME</th>
-                <th className="column4">PHONE NUMBER</th>
-                <th className="column5">ABOUT</th>
-                <th className="column6">ADDRESS</th>
-                <th className="column7">SEX</th>
-                <th className="column8">BIRTHDAY</th>
-                <th className="column9">STATUS</th>
-                <th className="column10">ACTION</th>
+                <th className="room_table-column1">ID</th>
+                <th className="room_table-column2">NAME</th>
+                <th className="room_table-column3">RATING</th>
+                <th className="room_table-column4">PRICE</th>
+                <th className="room_table-column5">DESCRIPTION</th>
+                <th className="room_table-column6">ADDRESS</th>
+                <th className="room_table-column7">STATUS</th>
+                <th className="room_table-column8">ACTION</th>
             </tr>
             </thead>
             <tbody>
             {
-                users.map((user,index)=>{
+                rooms.map((room, index)=>{
                     return(
-                        <tr key={user.id}>
-                            <td className="column1">
-                                <Link to={`${"edit/"+user.id}`}>
-                                    {user.id}
+                        <tr key={room.id}>
+                            <td className="room_table-column1">
+                                <Link to={`${"edit/"+room.id}`}>
+                                    {room.id}
                                 </Link>
                             </td>
-                            <td className="column2"><img src={"http://localhost:8080" + user.avatarPath}></img></td>
-                            <td className="column3">{user.fullName}</td>
-                            <td className="column4">{user.phoneNumber}</td>
-                            <td className="column5">{user.about}</td>
-                            <td className="column6">{user.fullPathAddress}</td>
-                            <td className="column7">{user.sex}</td>
-                            <td className="column8">{user.birthday}</td>
-                            <td className="column9">
-                            {user.status?<FontAwesomeIcon onClick={handleStatusChange} icon="fas fa-check-circle" color="green" size="2x"/>:<FontAwesomeIcon onClick={handleStatusChange} icon="fas fa-check-circle" size="2x"/>}
+                            <td className="room_table-column2">{room.name}</td>
+                            <td className="room_table-column3">{room.rating}</td>
+                            <td className="room_table-column4">{room.price}</td>
+                            <td className="room_table-column5">{room.description}</td>
+                            <td className="room_table-column6">{room.street + ", " + room.city.name + ", " + room.state.name + ", " + room.country.name}</td>
+                            <td className="room_table-column7">
+                            {room.status?<FontAwesomeIcon onClick={handleStatusChange} icon="fas fa-check-circle" color="green" size="2x"/>:<FontAwesomeIcon onClick={handleStatusChange} icon="fas fa-check-circle" size="2x"/>}
                             </td>
-                            <td className="column10"><button onClick={handleClickOpen}>Delete</button></td>
+                            <td className="room_table-column8"><button onClick={handleClickOpen}>Delete</button></td>
                         </tr>
                 ) 
                 })
@@ -170,7 +164,7 @@ function UsersTable(){
             </DialogTitle>
             <DialogContent>
             <DialogContentText id="alert-dialog-description">
-                DELETE THIS USER
+                DELETE THIS ROOM
             </DialogContentText>
             </DialogContent>
             <DialogActions>
@@ -204,4 +198,4 @@ function UsersTable(){
     }
 }
 
-export default UsersTable;
+export default RoomTable;

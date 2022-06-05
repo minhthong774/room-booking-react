@@ -4,7 +4,8 @@ import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
-import ProceedChart from '../ProceedChart/ProceedChart.component';
+import IncomeChart from '../IncomeChart/IncomeChart.component';
+import UserChart from '../UserChart/UserChart.component';
 
 export default function ScrollableTabsButtonAuto() {
   const [value, setValue] = React.useState('1');
@@ -21,15 +22,17 @@ export default function ScrollableTabsButtonAuto() {
             variant="scrollable"
             scrollButtons="auto"
           >
-            <Tab label="Proceeds" value="1" />
-            <Tab label="Item Two" value="2" />
-            <Tab label="Item Three" value="3" />
+            <Tab label="INCOME" value="1" />
+            <Tab label="New Users" value="2" />
+            <Tab label="New Rooms" value="3" />
           </TabList>
         </Box>
         <TabPanel value="1">
-          <ProceedChart/>
+          <IncomeChart/>
         </TabPanel>
-        <TabPanel value="2">Item Two</TabPanel>
+        <TabPanel value="2">
+          <UserChart/>
+        </TabPanel>
         <TabPanel value="3">Item Three</TabPanel>
       </TabContext>
     </Box>

@@ -4,20 +4,19 @@ body, html {
     background-image: url(https://img.freepik.com/free-vector/hand-painted-watercolor-pastel-sky-background_23-2148902771.jpg?w=2000);
 }
 
-.users{
+.bookings{
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: flex-start;
     flex-wrap: wrap;
-    padding: 30px;
 }
-.users-table{
+.bookings-table{
     border: 1px solid gray;
     margin: 1px auto;
     width: 100%;
     border-collapse: collapse;
     border-radius: 10px;
-    border-spacing: 1;
+    border-spacing: 1px;
     background: white;
     overflow:hidden;
     width:100%;

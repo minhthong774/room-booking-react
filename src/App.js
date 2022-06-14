@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./App.css";
 import Users from "./module/page/user/userPage/userPage.component.jsx";
 import Header from "./module/header/header.component.jsx";
@@ -11,7 +11,8 @@ import Login from "./module/page/login/login.component";
 import axios from "axios";
 import useToken from './module/token/useToken.jsx'
 
-import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
+import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import ChatPage from "./module/page/chat/chatPage.component";
 
 axios.defaults.withCredentials = true; 
 
@@ -33,6 +34,7 @@ function App() {
           <Route exact path="/rooms" element={<RoomPage />}></Route>
           <Route exact path="/bookings" element={<BookingPage />}></Route>
           <Route exact path="/stats" element={<StatisticPage />}></Route>
+          <Route exact path="/chat" element={<ChatPage/>}></Route>
         </Routes>
       </Router>
     </div>

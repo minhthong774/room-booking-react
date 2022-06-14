@@ -1,7 +1,11 @@
-.rooms-page{
+.bookings-page{
     h1{
-        margin-left: 30px;
         color: Blue;
         text-shadow: 1px 1px black;
+    }
+
+    .bookings-page-child {
+        margin-left: 30px;
+        margin-bottom: 10px;
     }
 }

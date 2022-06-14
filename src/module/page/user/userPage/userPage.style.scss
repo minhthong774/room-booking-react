@@ -1,7 +1,19 @@
 .users-page{
     h1{
-        margin-left: 30px;
         color: Blue;
         text-shadow: 1px 1px black;
+    }
+
+    .child {
+        margin-left: 30px;
+        margin-bottom: 10px;
+        margin-right: 30px;
+    }
+
+    .action-container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-end;
+
     }
 }

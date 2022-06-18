@@ -281,7 +281,7 @@ function EditUserPage() {
 
 
                     <label className="form-label">Address</label>
-                    <input className="form-input" value={user.address.aprtNoAndStreet} name="Address"
+                    <input className="form-input" value={user.address?user.address.aprtNoAndStreet:""} name="Address"
                            onChange={handleInputChange} type="text"/>
 
                     <label className="form-label">About</label>

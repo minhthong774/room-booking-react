@@ -13,8 +13,9 @@ import useToken from './module/token/useToken.jsx'
 
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import ChatPage from "./module/page/chat/chatPage.component";
+import SettingPage from "./module/page/setting/settingPage/settingPage.component";
 
-axios.defaults.withCredentials = true; 
+axios.defaults.withCredentials = true;
 
 function App() {
   const { token, setToken } = useToken();
@@ -34,7 +35,8 @@ function App() {
           <Route exact path="/rooms" element={<RoomPage />}></Route>
           <Route exact path="/bookings" element={<BookingPage />}></Route>
           <Route exact path="/stats" element={<StatisticPage />}></Route>
-          <Route exact path="/chat" element={<ChatPage/>}></Route>
+          <Route exact path="/setting" element={<SettingPage />}></Route>
+          {/*<Route exact path="/chat" element={<ChatPage/>}></Route>*/}
         </Routes>
       </Router>
     </div>

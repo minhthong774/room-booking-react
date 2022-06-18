@@ -11,9 +11,9 @@ function Header({token}) {
                     <Link to={"/users"}>USER</Link>
                     <Link to={"/rooms"}>ROOM</Link>
                     <Link to={"/bookings"}>BOOKING</Link>
-                    <Link to={"/settings"}>SETTING</Link>
+                    <Link to={"/setting"}>SETTING</Link>
                     <Link to={"/stats"}>STATS</Link>
-                    <Link to={"/chat"}>CHAT</Link>
+                    {/*<Link to={"/chat"}>CHAT</Link>*/}
                 </div>
 
                 <div className="nav-right">

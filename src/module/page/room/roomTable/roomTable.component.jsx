@@ -102,7 +102,7 @@ function RoomTable({searchText, triggerSearch}) {
                     setError(error);
                 }
             )
-    }, [page, status, triggerSearch])
+    }, [page, status, triggerSearch, rooms])
 
     if (error) {
         return <div>Error: {error.message}</div>;

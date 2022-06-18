@@ -103,7 +103,7 @@ function BookingTable({searchText, triggerSearch}) {
                     setError(error);
                 }
             )
-    }, [page, status, triggerSearch])
+    }, [page, status, triggerSearch, bookings])
 
     if (error) {
         return <div>Error: {error.message}</div>;
@@ -178,7 +178,7 @@ function BookingTable({searchText, triggerSearch}) {
                     </DialogTitle>
                     <DialogContent>
                         <DialogContentText id="alert-dialog-description">
-                            DELETE THIS ROOM
+                            DELETE THIS BOOKING
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>

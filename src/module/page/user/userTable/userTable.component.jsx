@@ -102,7 +102,7 @@ function UsersTable({searchText, triggerSearch}) {
                     setError(error);
                 }
             )
-    }, [page, status, triggerSearch])
+    }, [page, status, triggerSearch, users])
 
     if (error) {
         return <div>Error: {error.message}</div>;

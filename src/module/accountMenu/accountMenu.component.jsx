@@ -35,6 +35,9 @@ export default function AccountMenu({token}) {
     const handleProfile = () => {
         navigate(`/users/edit/${token.id}`)
     }
+    const handleSettings = () => {
+        navigate(`/setting`);
+    }
     return (
         <React.Fragment>
             <Box sx={{display: 'flex', alignItems: 'center', textAlign: 'center'}}>
@@ -96,7 +99,7 @@ export default function AccountMenu({token}) {
                     </ListItemIcon>
                     Add another account
                 </MenuItem>
-                <MenuItem>
+                <MenuItem onClick={handleSettings}>
                     <ListItemIcon>
                         <Settings fontSize="small"/>
                     </ListItemIcon>

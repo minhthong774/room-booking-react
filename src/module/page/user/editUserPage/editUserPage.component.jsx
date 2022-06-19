@@ -39,6 +39,7 @@ function EditUserPage() {
     const [idCountry, setIdCountry] = useState(null);
     const [idState, setIdState] = useState(null);
     const [idCity, setIdCity] = useState(null);
+    const [host, setHost] = useState();
 
     const [open, setOpen] = React.useState(false);
     const [title, setTitle] = useState(null);
@@ -63,6 +64,7 @@ function EditUserPage() {
                 setIdCountry(response.data.address.country.id);
                 setIdState(response.data.address.state.id);
                 setIdCity(response.data.address.city.id);
+                setHost(response.data.role.id);
             })
             .catch(err => {
             })
@@ -129,11 +131,8 @@ function EditUserPage() {
                 setUser({...user, "password": input.value})
                 break;
             case "Host":
-                if (input.checked) {
-                    setUser({...user, "role": {"id": input.id, "name": input.value}})
-                } else {
-                    setUser({...user, "role": null})
-                }
+                setUser({...user, "role": {"id": input.id, "name": input.value}})
+                setHost(input.id);
                 break;
             case "PhoneNumber":
                 setUser({...user, "phoneNumber": input.value})
@@ -245,14 +244,14 @@ function EditUserPage() {
                     <input className="form-input form-input__last-name" value={user.password} name="Password"
                            onChange={handleInputChange} type="password"/>
 
-                    <input className="form-radio" onChange={handleInputChange} checked={user.role?.id === 3}
-                           type="checkbox" name="Host" id="3" value="Admin"/>
+                    <input className="form-radio" onChange={handleInputChange} checked={host == 3}
+                           type="radio" name="Host" id="3" value="Admin"/>
                     <label className="form-radio__label">Admin</label>
-                    <input className="form-radio" onChange={handleInputChange} checked={user.role?.id === 2}
-                           type="checkbox" name="Host" id="2" value="User"/>
+                    <input className="form-radio" onChange={handleInputChange} checked={host == 2}
+                           type="radio" name="Host" id="2" value="User"/>
                     <label className="form-radio__label">User</label>
-                    <input className="form-radio" onChange={handleInputChange} checked={user.role?.id === 1}
-                           type="checkbox" name="Host" id="1" value="Host"/>
+                    <input className="form-radio" onChange={handleInputChange} checked={host == 1}
+                           type="radio" name="Host" id="1" value="Host"/>
                     <label className="form-radio__label">Host</label>
 
                     <label className="form-label">Phone Number</label>
